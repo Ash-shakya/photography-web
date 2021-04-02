@@ -19,13 +19,15 @@ body {
 /* navbar */
 .navbar {
   top: 0;
+  left: 0;
+  right: 0;
   width: 100vw;
   position: absolute;
   z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-left: 50px;
+  padding-left: 50px;
 }
 .logo {
   min-width: 175px;
