@@ -9,12 +9,16 @@
   --primaryColor: #333;
   --secondaryColor: #eee;
   --primaryText: #eee;
+  /* --navColor: #70baff; */
+  --navColor: rgba(112, 186, 255, 0.9);
 }
 body {
   font-family: "Poppins", sans-serif;
   background: var(--secondaryColor);
   color: var(--primaryColor);
   line-height: 1.6;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 /* navbar */
 .navbar {
@@ -28,9 +32,11 @@ body {
   align-items: center;
   justify-content: space-around;
   padding-left: 50px;
+  padding-right: 50px;
 }
 .logo {
   min-width: 175px;
+  z-index: 4;
 }
 .navbar-nav {
   list-style: none;
@@ -39,7 +45,7 @@ body {
   justify-content: space-between;
   /* margin-right: 50px; */
   padding-left: 100px;
-  padding-right: 100px;
+  padding-right: 75px;
 }
 .nav-item {
   letter-spacing: 2px;
@@ -60,15 +66,17 @@ body {
 }
 /* responsive navbar */
 .burger {
-  position: absolute;
+  /* position: absolute; */
   cursor: pointer;
-  /* display: none; */
+  display: none;
+  z-index: 4;
 }
 .burger div {
   background-color: var(--secondaryColor);
   width: 25px;
   height: 3px;
   margin: 5px;
+  transition: all 0.2s ease;
 }
 
 /* Image Slider */
@@ -159,11 +167,12 @@ body {
 .quote {
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   height: 25vh;
   align-items: center;
   font-size: 1.5rem;
-  width: auto;
+  max-width: 100%;
 }
 .quote p::before {
   content: open-quote;
@@ -177,10 +186,13 @@ body {
   color: rgb(0, 0, 0);
   /* display: block; */
 }
+.quote span {
+  font-weight: bold;
+}
 
 /* responsive */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 620px) {
   .slide .content {
     bottom: -300px;
     left: 0;
@@ -189,4 +201,53 @@ body {
   .slide.current .content {
     transform: translateY(-300px);
   }
+  body {
+    /* overflow: hidden; */
+    overflow-x: hidden;
+  }
+  .navbar-nav {
+    position: absolute;
+    right: 0px;
+    height: 100vh;
+    top: 0vh;
+    background-color: var(--navColor);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    transform: translateX(100%);
+    padding-top: 15vh;
+    transition: transform 0.5s ease-in;
+  }
+  .navbar-nav li {
+    opacity: 0;
+  }
+  .burger {
+    display: block;
+  }
+}
+.nav-active {
+  transform: translateX(0%);
+}
+
+@keyframes navLinksFade {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+.cross .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+.cross .line2 {
+  opacity: 0;
+}
+.cross .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
 }

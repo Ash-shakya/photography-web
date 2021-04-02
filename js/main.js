@@ -44,3 +44,29 @@ prev.addEventListener('click', e=> {
 if(auto){
  slideInterval= setInterval(nextSlide,intervalTime);
 };
+
+
+const burger = document.querySelector('.burger');
+const nav = document.querySelector('.navbar-nav');
+const navLinks = document.querySelectorAll('.navbar-nav li');
+
+const navSlide = () => {
+    burger.addEventListener('click', () => {
+        console.log('hi');
+        nav.classList.toggle('nav-active');
+
+        navLinks.forEach((link, index) => {
+            if(link.style.animation){
+                link.style.animation = '';
+            }else{
+            link.style.animation = `navLinksFade 0.5s ease forwards ${index / 5+ 0.5}s`;
+            // console.log(index);
+            }
+        });
+        burger.classList.toggle('cross');
+    });
+
+}
+
+
+navSlide();
